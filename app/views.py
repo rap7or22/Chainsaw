@@ -44,6 +44,14 @@ def process_scavpro():
     return "Success"
 
 
+@app.route('/shittybeacon', methods=['POST'])
+def shittybeacon():
+    content = request.json
+    ip = content['IP']
+    creds = content['message']
+    log_creds(ip, creds)
+    return "Success"
+
 @app.route("/pwnboard", methods=['POST'])
 def checkin():
     content = request.json
