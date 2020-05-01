@@ -30,6 +30,7 @@ def log(string):
     @param string: data to be writte to log file (newlines included)
     @return: None
     """
+    print(string)
     if HOST and PORT != -1:
         send_syslog(string)
     else:
@@ -152,6 +153,7 @@ def log_creds(ip, creds):
         user = splt[1]
         pswd = splt[2]
         lines += "CREDENTIAL {} {} {} {}\n".format(ip, typ, user, pswd)
+    print(lines)
     log(lines)
     return
 
@@ -161,5 +163,5 @@ def log_generic(ip, message):
         if not line:
             continue
         lines += "GENERIC {} {}\n".format(ip, message)
-    log(lines)
+    #log(lines)
     return
